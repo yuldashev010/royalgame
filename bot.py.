@@ -16,7 +16,7 @@ from telegram.ext import (
 
 logging.basicConfig(level=logging.INFO)
 
-TOKEN = os.getenv("BOT_TOKEN")
+TOKEN = os.getenv("9009598200:AAHE32IcKtMhFXsVylN2e3psMdEXwaBCbSs")
 
 # GitHub Pages manzilini keyin shu yerga qo'yamiz
 WEBAPP_URL = "https://yuldashev010.github.io/royalgame/"
