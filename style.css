@@ -1,0 +1,76 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(160deg, #315b20, #081b09);
+    color: #ffe7a0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ffcf40;
+}
+
+.coin {
+    background: #422d13;
+    border: 1px solid #e9b74c;
+    padding: 10px 16px;
+    border-radius: 25px;
+}
+
+.profile {
+    margin: 15px;
+    padding: 20px;
+    background: #183713;
+    border: 2px solid #9b7135;
+    border-radius: 20px;
+}
+
+.menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 15px;
+}
+
+.card {
+    background: linear-gradient(#65451f, #39230f);
+    border: 2px solid #bd8c40;
+    border-radius: 18px;
+    padding: 20px 8px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.card span {
+    display: block;
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.play {
+    margin: 15px;
+    padding: 22px;
+    text-align: center;
+    background: linear-gradient(#ffdf79, #d89b24);
+    color: #422408;
+    border-radius: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
