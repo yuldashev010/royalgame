@@ -1,0 +1,101 @@
+
+import os
+import logging
+
+from telegram import (
+    Update,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    WebAppInfo
+)
+from telegram.ext import (
+    Application,
+    CommandHandler,
+    ContextTypes
+)
+
+logging.basicConfig(level=logging.INFO)
+
+TOKEN = os.getenv("BOT_TOKEN")
+
+# GitHub Pages manzilini keyin shu yerga qo'yamiz
+WEBAPP_URL = "https://yuldashev010.github.io/royalgame/"
+
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user = update.effective_user
+    name = user.first_name or "Do‘stim"
+
+    keyboard = [
+        [
+            InlineKeyboardButton(
+                "👑 RoyalGame ochish",
+                web_app=WebAppInfo(url=WEBAPP_URL)
+            )
+        ]
+    ]
+
+    await update.message.reply_text(
+        f"👋 Assalomu alaykum, {name}!\n\n"
+        "👑 RoyalGame o‘yinlar olamiga xush kelibsiz!\n\n"
+        "🎮 Shaxmat | Shashka | UNO | Billiard\n"
+        "🪙 R Coin | 🎁 Bonus | 🏆 Reyting",
+        reply_markup=InlineKeyboardMarkup(keyboard)
+    )
+
+
+async def profile(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "👤 Profil\n\n"
+        "⭐ Level: 1\n"
+        "🪙 R Coin: 5\n"
+        "🏆 G‘alabalar: 0"
+    )
+
+
+async def games(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "🎮 RoyalGame o‘yinlari:\n\n"
+        "♟ Shashka\n"
+        "♟ Shaxmat\n"
+        "🃏 UNO\n"
+        "🎱 Billiard\n\n"
+        "Barcha o‘yinlar onlayn bo‘ladi!"
+    )
+
+
+async def balance(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "🪙 R Coin balansingiz: 5"
+    )
+
+
+async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "👑 RoyalGame yordam\n\n"
+        "/start - Botni boshlash\n"
+        "/games - O‘yinlar\n"
+        "/profile - Profil\n"
+        "/balance - Coin balans"
+    )
+
+
+def main():
+    if not TOKEN:
+        raise RuntimeError("BOT_TOKEN env o‘zgaruvchisi topilmadi!")
+
+    app = Application.builder().token(TOKEN).build()
+
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("profile", profile))
+    app.add_handler(CommandHandler("games", games))
+    app.add_handler(CommandHandler("balance", balance))
+    app.add_handler(CommandHandler("help", help_command))
+
+    print("RoyalGame bot ishga tushdi!")
+
+    app.run_polling()
+
+
+if __name__ == "__main__":
+    main()
