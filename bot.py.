@@ -1,4 +1,4 @@
-
+import database
 import os
 import logging
 
@@ -24,6 +24,7 @@ WEBAPP_URL = "https://yuldashev010.github.io/royalgame/"
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
+database.create_user(user.id, user.first_name)
     name = user.first_name or "Do‘stim"
 
     keyboard = [
@@ -98,4 +99,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(import database)
